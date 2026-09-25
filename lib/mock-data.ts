@@ -1,0 +1,228 @@
+import { MarketplaceCreator, Product } from './types';
+
+// Demo content only — Lost Legacy Digital has no live creators or transactions yet.
+// See spec section 32: sample products must be clearly marked as demo content.
+
+export const MOCK_CREATORS: MarketplaceCreator[] = [
+  {
+    id: 'c1',
+    name: 'Gogo Chiedza Marimo',
+    slug: 'gogo-chiedza-marimo',
+    tagline: 'Oral historian and grandmother, Chivi',
+    bio: 'Gogo Chiedza has spent decades collecting and retelling the oral histories of the Chivi community, passed down from her own grandmother.',
+    location: 'Chivi',
+    province: 'Masvingo',
+    languages: ['Shona', 'English'],
+    image_url: 'https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=600',
+    verification_status: 'verified',
+    earned: 340,
+    productsSold: 68,
+    customers: 61,
+  },
+  {
+    id: 'c2',
+    name: 'Tanaka Museta',
+    slug: 'tanaka-museta',
+    tagline: 'Illustrator and children\'s author, Harare',
+    bio: 'Tanaka illustrates and writes folktale collections for children, working to keep Shona and Ndebele stories alive for the next generation.',
+    location: 'Harare',
+    province: 'Harare',
+    languages: ['Shona', 'Ndebele', 'English'],
+    image_url: 'https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=600',
+    verification_status: 'verified',
+    earned: 512,
+    productsSold: 128,
+    customers: 110,
+  },
+  {
+    id: 'c3',
+    name: 'Nkosana Dube',
+    slug: 'nkosana-dube',
+    tagline: 'Traditional potter, Bulawayo',
+    bio: 'Nkosana learned pottery from his mother in Bulawayo and now runs hands-on workshops teaching traditional Ndebele pottery techniques.',
+    location: 'Bulawayo',
+    province: 'Bulawayo',
+    languages: ['Ndebele', 'English'],
+    image_url: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=600',
+    verification_status: 'verified',
+    earned: 890,
+    productsSold: 44,
+    customers: 39,
+  },
+  {
+    id: 'c4',
+    name: 'Rudo Chikafu',
+    slug: 'rudo-chikafu',
+    tagline: 'Traditional textile artist, Bulawayo',
+    bio: 'Rudo weaves traditional Zimbabwean patterns into contemporary wall art, sourcing cotton and dyes from local cooperatives.',
+    location: 'Bulawayo',
+    province: 'Bulawayo',
+    languages: ['Ndebele', 'Shona', 'English'],
+    image_url: 'https://images.pexels.com/photos/3812433/pexels-photo-3812433.jpeg?auto=compress&cs=tinysrgb&w=600',
+    verification_status: 'unverified',
+    earned: 210,
+    productsSold: 12,
+    customers: 12,
+  },
+];
+
+export const MOCK_PRODUCTS: Product[] = [
+  {
+    id: 'p1',
+    title: 'Stories From My Grandmother',
+    slug: 'stories-from-my-grandmother',
+    type: 'digital',
+    category: 'Oral History',
+    price: 5,
+    currency: 'USD',
+    image_url: 'https://images.pexels.com/photos/3823488/pexels-photo-3823488.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'A digital collection of oral histories recorded with Gogo Chiedza, covering family life, farming, and community traditions in Chivi across five decades.',
+    culturalContext: 'Recorded in Shona with English subtitles, this collection preserves everyday knowledge that is rarely written down.',
+    language: 'Shona',
+    region: 'Masvingo',
+    creatorId: 'c1',
+    verification_status: 'verified',
+    rating: 4.8,
+    reviewCount: 24,
+    isDemo: true,
+  },
+  {
+    id: 'p2',
+    title: "Shona Children's Folktales",
+    slug: 'shona-childrens-folktales',
+    type: 'digital',
+    category: 'Literature',
+    price: 4,
+    currency: 'USD',
+    image_url: 'https://images.pexels.com/photos/3547625/pexels-photo-3547625.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'An illustrated digital book of ten classic Shona folktales, retold for children aged 5-10 with full-colour illustrations.',
+    culturalContext: 'Each tale includes a short note on its origin and the moral lesson it traditionally teaches.',
+    language: 'Shona',
+    region: 'Harare',
+    creatorId: 'c2',
+    verification_status: 'verified',
+    rating: 4.9,
+    reviewCount: 51,
+    isDemo: true,
+  },
+  {
+    id: 'p3',
+    title: 'Traditional Pottery Workshop',
+    slug: 'traditional-pottery-workshop',
+    type: 'experience',
+    category: 'Craft',
+    price: 20,
+    currency: 'USD',
+    image_url: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'A half-day, hands-on pottery workshop in Bulawayo. Learn traditional Ndebele coiling and firing techniques and take home a piece you make.',
+    culturalContext: 'These techniques have been passed down through generations of Ndebele potters and are rarely taught outside the family.',
+    language: 'English',
+    region: 'Bulawayo',
+    creatorId: 'c3',
+    verification_status: 'verified',
+    rating: 5,
+    reviewCount: 9,
+    isDemo: true,
+  },
+  {
+    id: 'p4',
+    title: 'Zimbabwean Heritage Photography Collection',
+    slug: 'zimbabwean-heritage-photography-collection',
+    type: 'digital',
+    category: 'Photography',
+    price: 8,
+    currency: 'USD',
+    image_url: 'https://images.pexels.com/photos/2422915/pexels-photo-2422915.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'A curated digital collection of 40 high-resolution photographs documenting historical sites and everyday life across Zimbabwe.',
+    culturalContext: 'Photographs span Great Zimbabwe, Matobo Hills, and rural community life, with captions on location and period.',
+    language: 'English',
+    region: 'Masvingo',
+    creatorId: 'c1',
+    verification_status: 'unverified',
+    rating: 4.6,
+    reviewCount: 15,
+    isDemo: true,
+  },
+  {
+    id: 'p5',
+    title: 'ZIMSEC Heritage Studies Revision Pack',
+    slug: 'zimsec-heritage-studies-revision-pack',
+    type: 'digital',
+    category: 'Education',
+    price: 3,
+    currency: 'USD',
+    image_url: 'https://images.pexels.com/photos/3747139/pexels-photo-3747139.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'A ZIMSEC-aligned Heritage Studies revision pack for Grade 6-7, covering Great Zimbabwe, pre-colonial trade, and traditional governance.',
+    culturalContext: 'Written by a former Heritage Studies teacher and reviewed against the current ZIMSEC syllabus.',
+    language: 'English',
+    region: 'Harare',
+    creatorId: 'c2',
+    verification_status: 'verified',
+    rating: 4.7,
+    reviewCount: 33,
+    isDemo: true,
+  },
+  {
+    id: 'p6',
+    title: 'Traditional Textile Wall Art',
+    slug: 'traditional-textile-wall-art',
+    type: 'physical',
+    category: 'Craft',
+    price: 45,
+    currency: 'USD',
+    image_url: 'https://images.pexels.com/photos/3812433/pexels-photo-3812433.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'A handwoven wall hanging using traditional Zimbabwean patterns and locally sourced cotton and natural dyes. Made to order in Bulawayo.',
+    culturalContext: 'The geometric pattern used here is drawn from traditional Ndebele house-painting motifs.',
+    language: 'English',
+    region: 'Bulawayo',
+    creatorId: 'c4',
+    verification_status: 'unverified',
+    rating: null,
+    reviewCount: 0,
+    isDemo: true,
+  },
+  {
+    id: 'p7',
+    title: 'Preserve Your Family Story',
+    slug: 'preserve-your-family-story',
+    type: 'service',
+    category: 'Oral History',
+    price: 75,
+    currency: 'USD',
+    image_url: 'https://images.pexels.com/photos/3823207/pexels-photo-3823207.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    description: 'A guided digitisation service: a recorded interview with an elder in your family, transcription, photo scanning, and a private digital family archive.',
+    culturalContext: 'Delivered with a respectful, community-verification-informed process rather than a one-off recording.',
+    language: 'English',
+    region: 'Harare',
+    creatorId: 'c1',
+    verification_status: 'unverified',
+    rating: null,
+    reviewCount: 0,
+    isDemo: true,
+  },
+];
+
+export const PRODUCTS_WITH_CREATORS: Product[] = MOCK_PRODUCTS.map((p) => ({
+  ...p,
+  creator: MOCK_CREATORS.find((c) => c.id === p.creatorId),
+}));
+
+export function getProductBySlug(slug: string): Product | undefined {
+  const product = MOCK_PRODUCTS.find((p) => p.slug === slug);
+  if (!product) return undefined;
+  return { ...product, creator: MOCK_CREATORS.find((c) => c.id === product.creatorId) };
+}
+
+export function getCreatorBySlug(slug: string): MarketplaceCreator | undefined {
+  return MOCK_CREATORS.find((c) => c.slug === slug);
+}
+
+export function getProductsByCreator(creatorId: string): Product[] {
+  return MOCK_PRODUCTS.filter((p) => p.creatorId === creatorId);
+}
+
+export function getRelatedProducts(product: Product, limit = 3): Product[] {
+  return MOCK_PRODUCTS.filter(
+    (p) => p.id !== product.id && (p.category === product.category || p.type === product.type)
+  ).slice(0, limit);
+}

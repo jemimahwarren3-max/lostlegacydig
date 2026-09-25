@@ -228,3 +228,93 @@ export const CATEGORIES: Record<string, string> = {
   community: 'Community',
   creators: 'Creators',
 };
+
+// --- Marketplace (Lost Legacy Digital) ---
+
+export type ProductType = 'digital' | 'physical' | 'service' | 'experience';
+
+export interface MarketplaceCreator {
+  id: string;
+  name: string;
+  slug: string;
+  tagline: string;
+  bio: string;
+  location: string;
+  province: string;
+  languages: string[];
+  image_url: string | null;
+  verification_status: 'unverified' | 'verified';
+  earned: number;
+  productsSold: number;
+  customers: number;
+}
+
+export interface Product {
+  id: string;
+  title: string;
+  slug: string;
+  type: ProductType;
+  category: string;
+  price: number;
+  currency: string;
+  image_url: string;
+  description: string;
+  culturalContext: string;
+  language: string;
+  region: string;
+  creatorId: string;
+  creator?: MarketplaceCreator;
+  verification_status: 'unverified' | 'verified';
+  rating: number | null;
+  reviewCount: number;
+  isDemo: true;
+}
+
+export const MARKETPLACE_CATEGORIES = [
+  'History',
+  'Oral History',
+  'Food',
+  'Music',
+  'Art',
+  'Craft',
+  'Poetry',
+  'Literature',
+  'Traditional Knowledge',
+  'Language',
+  'Education',
+  'Fashion',
+  'Photography',
+  'Film',
+  'Tourism',
+  'Experiences',
+] as const;
+
+export const REGIONS = [
+  'Harare',
+  'Bulawayo',
+  'Mashonaland Central',
+  'Mashonaland East',
+  'Mashonaland West',
+  'Manicaland',
+  'Masvingo',
+  'Matabeleland North',
+  'Matabeleland South',
+  'Midlands',
+] as const;
+
+export const LANGUAGES = [
+  'Shona',
+  'Ndebele',
+  'English',
+  'Tonga',
+  'Chewa',
+  'Kalanga',
+  'Venda',
+] as const;
+
+export const PRODUCT_TYPE_LABELS: Record<ProductType, string> = {
+  digital: 'Digital',
+  physical: 'Physical',
+  service: 'Service',
+  experience: 'Experience',
+};

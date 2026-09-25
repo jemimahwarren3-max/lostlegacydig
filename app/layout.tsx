@@ -4,9 +4,9 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 
 export const metadata: Metadata = {
-  title: 'Kumbwata — Zimbabwe\'s Living Heritage',
+  title: 'Lost Legacy Digital — Zimbabwe\'s Cultural Marketplace',
   description:
-    'Explore the stories, people, places, knowledge and creativity that shape Zimbabwe. A living cultural platform for communities, schools, creators, and learners.',
+    'Discover the people, stories, knowledge, art and creativity shaping Zimbabwe. Learn from it. Buy it. Experience it. Preserve it.',
 };
 
 export default function RootLayout({
