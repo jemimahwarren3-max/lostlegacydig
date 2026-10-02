@@ -1,0 +1,153 @@
+// Run with: npm run seed
+// Resets data/db.json to a small demo dataset so the app is demoable immediately.
+const fs = require("fs");
+const path = require("path");
+
+const dbPath = path.join(process.cwd(), "data", "db.json");
+
+const now = (daysAgo = 0) => {
+  const d = new Date();
+  d.setDate(d.getDate() - daysAgo);
+  return d.toISOString();
+};
+
+const db = {
+  books: [
+    {
+      id: 1,
+      type: "book",
+      title: "Voices of the Midlands: Oral Histories from Gweru",
+      authorName: "Tendai Moyo",
+      authorEmail: "tendai@example.com",
+      priceUSD: 4,
+      description: "Twelve first-hand accounts collected from elders around Gweru, on farming, family and the years before independence.",
+      content: "Chapter 1: The first time my grandmother told me about the drought of 1947, we were sitting outside her kitchen hut as the sun went down...\n\n(Full manuscript goes here. This is a preview for the MVP reader.)",
+      status: "verified",
+      createdAt: now(10),
+      reviewedAt: now(9),
+    },
+    {
+      id: 2,
+      type: "book",
+      title: "The Mbira Maker's Notebook",
+      authorName: "Grace Chikwava",
+      authorEmail: "grace@example.com",
+      priceUSD: 6,
+      description: "A craftswoman's working notes on building and tuning mbira, passed down through three generations in Mutare.",
+      content: "Note 1: Choosing the hosho gourd. My grandfather taught me to knock on three before I pick one...\n\n(Full manuscript goes here.)",
+      status: "verified",
+      createdAt: now(8),
+      reviewedAt: now(7),
+    },
+    {
+      id: 3,
+      type: "book",
+      title: "Recipes My Mother Kept",
+      authorName: "Rudo Sibanda",
+      authorEmail: "rudo@example.com",
+      priceUSD: 3,
+      description: "Shona and Ndebele family recipes, written down for the first time, with the stories behind each one.",
+      content: "Recipe 1: Sadza remapfunde, the way my mother made it every Sunday...\n\n(Full manuscript goes here.)",
+      status: "verified",
+      createdAt: now(5),
+      reviewedAt: now(4),
+    },
+    {
+      id: 4,
+      type: "book",
+      title: "A Chiweshe Childhood",
+      authorName: "Farai Mutasa",
+      authorEmail: "farai@example.com",
+      priceUSD: 5,
+      description: "Growing up in Chiweshe communal lands in the 1980s, as told to my own children.",
+      content: "Chapter 1: We walked six kilometres to school, and I never once thought of it as far...",
+      status: "pending",
+      createdAt: now(1),
+    },
+  ],
+  lessons: [
+    {
+      id: 1,
+      type: "lesson",
+      title: "Learn Basic Shona Proverbs",
+      teacherName: "Tendai Moyo",
+      teacherEmail: "tendai@example.com",
+      priceUSD: 1.5,
+      description: "A 6-part series on everyday Shona proverbs, what they mean, and when elders actually use them.",
+      content: "Lesson 1: Chara chimwe hachitswanyi inda. One finger cannot crush a louse...",
+      status: "verified",
+      createdAt: now(9),
+      reviewedAt: now(8),
+    },
+    {
+      id: 2,
+      type: "lesson",
+      title: "Mbira for Absolute Beginners",
+      teacherName: "Grace Chikwava",
+      teacherEmail: "grace@example.com",
+      priceUSD: 2.5,
+      description: "Four video lessons: holding the instrument, your first kushaura pattern, and tuning by ear.",
+      content: "Lesson 1 (video): Start with your thumbs on the two lowest left-hand keys...",
+      status: "verified",
+      createdAt: now(6),
+      reviewedAt: now(5),
+    },
+    {
+      id: 3,
+      type: "lesson",
+      title: "Ndebele Beadwork Basics",
+      teacherName: "Sipho Ndlovu",
+      teacherEmail: "sipho@example.com",
+      priceUSD: 2,
+      description: "Traditional beadwork patterns and their meanings, taught step by step.",
+      content: "Lesson 1: Choosing your colours. Each colour in Ndebele beadwork carries a meaning...",
+      status: "pending",
+      createdAt: now(1),
+    },
+  ],
+  orders: [
+    {
+      id: 1,
+      itemType: "book",
+      itemId: 1,
+      buyerName: "Chipo Ncube",
+      buyerPhone: "0771234567",
+      amountUSD: 4,
+      status: "paid",
+      paynowReference: "DEMO-REF-0001",
+      pollUrl: null,
+      createdAt: now(3),
+      paidAt: now(3),
+    },
+    {
+      id: 2,
+      itemType: "lesson",
+      itemId: 1,
+      buyerName: "Blessing Dube",
+      buyerPhone: "0772345678",
+      amountUSD: 1.5,
+      status: "paid",
+      paynowReference: "DEMO-REF-0002",
+      pollUrl: null,
+      createdAt: now(2),
+      paidAt: now(2),
+    },
+    {
+      id: 3,
+      itemType: "book",
+      itemId: 2,
+      buyerName: "Tafadzwa Moyo",
+      buyerPhone: "0773456789",
+      amountUSD: 6,
+      status: "pending",
+      paynowReference: null,
+      pollUrl: null,
+      createdAt: now(0),
+      paidAt: null,
+    },
+  ],
+};
+
+fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+fs.writeFileSync(dbPath, JSON.stringify(db, null, 2));
+console.log("Seeded data/db.json with demo books, lessons and orders.");

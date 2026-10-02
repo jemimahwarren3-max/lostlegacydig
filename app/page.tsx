@@ -1,16 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ShoppingBag, PenTool, Sparkles, MapPin, Languages, Tag } from 'lucide-react';
+import { ArrowRight, ShoppingBag, PenTool, Sparkles, MapPin, Languages, Tag, BookOpen, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ProductCard } from '@/components/product-card';
 import { PRODUCTS_WITH_CREATORS, MOCK_CREATORS } from '@/lib/mock-data';
 import { REGIONS, LANGUAGES, MARKETPLACE_CATEGORIES } from '@/lib/types';
+import { getVerifiedBooks, getVerifiedLessons } from '@/lib/db';
 
-export default function Home() {
+export default async function Home() {
   const trending = PRODUCTS_WITH_CREATORS.slice(0, 6);
   const totalEarned = MOCK_CREATORS.reduce((sum, c) => sum + c.earned, 0);
+  const books = getVerifiedBooks().slice(0, 3);
+  const lessons = getVerifiedLessons().slice(0, 3);
 
   return (
     <div className="flex flex-col">
@@ -113,6 +116,79 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Heritage Books & Teach-and-Earn Lessons (verified, EcoCash checkout) */}
+      {(books.length > 0 || lessons.length > 0) && (
+        <section className="py-16 lg:py-24 bg-secondary/30">
+          <div className="container mx-auto px-4">
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <h2 className="font-playfair text-3xl sm:text-4xl font-bold">Heritage Books &amp; Teach &amp; Earn Lessons</h2>
+                <p className="mt-2 text-muted-foreground">
+                  Verified stories and skills from Zimbabwean writers and makers, sold here at home, billed by EcoCash.
+                </p>
+              </div>
+              <Link href="/submit" className="hidden sm:block">
+                <Button variant="ghost" className="text-primary">
+                  Share your own work <ArrowRight className="ml-1 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div>
+                <h3 className="flex items-center gap-2 font-semibold text-sm mb-3">
+                  <BookOpen className="h-4 w-4 text-primary" /> Heritage Books
+                </h3>
+                <div className="space-y-3">
+                  {books.map((b: any) => (
+                    <Link key={b.id} href={`/books/${b.id}`}>
+                      <Card className="hover:shadow-md transition-shadow">
+                        <CardContent className="p-4 flex items-center justify-between gap-4">
+                          <div>
+                            <div className="font-medium">{b.title}</div>
+                            <div className="text-sm text-muted-foreground">by {b.authorName}</div>
+                          </div>
+                          <Badge variant="outline">${b.priceUSD.toFixed(2)}</Badge>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
+                  {books.length === 0 && <p className="text-sm text-muted-foreground">No verified books yet.</p>}
+                </div>
+                <Link href="/books" className="mt-4 inline-block">
+                  <Button variant="outline" size="sm">Browse all books</Button>
+                </Link>
+              </div>
+
+              <div>
+                <h3 className="flex items-center gap-2 font-semibold text-sm mb-3">
+                  <GraduationCap className="h-4 w-4 text-primary" /> Teach &amp; Earn Lessons
+                </h3>
+                <div className="space-y-3">
+                  {lessons.map((l: any) => (
+                    <Link key={l.id} href={`/lessons/${l.id}`}>
+                      <Card className="hover:shadow-md transition-shadow">
+                        <CardContent className="p-4 flex items-center justify-between gap-4">
+                          <div>
+                            <div className="font-medium">{l.title}</div>
+                            <div className="text-sm text-muted-foreground">taught by {l.teacherName}</div>
+                          </div>
+                          <Badge variant="outline">${l.priceUSD.toFixed(2)}/mo</Badge>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
+                  {lessons.length === 0 && <p className="text-sm text-muted-foreground">No verified lessons yet.</p>}
+                </div>
+                <Link href="/lessons" className="mt-4 inline-block">
+                  <Button variant="outline" size="sm">Browse all lessons</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Discover Zimbabwe */}
       <section className="py-16 lg:py-24 bg-secondary/30">

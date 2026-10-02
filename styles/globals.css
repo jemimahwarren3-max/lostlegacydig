@@ -1,0 +1,289 @@
+:root {
+  --ink: #1f2a24;
+  --cream: #f6f0e4;
+  --gold: #e2a72e;
+  --rust: #b9482a;
+  --green-light: #2a382f;
+  --muted: #5b6259;
+  --border: #e1d6bf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, 'EB Garamond', serif;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.nav {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nav-brand {
+  font-family: Georgia, 'EB Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  opacity: 0.9;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.hero {
+  padding: 56px 0 32px;
+}
+
+.hero p.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--rust);
+  margin: 0 0 10px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.hero p.sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.card {
+  background: #fffbf2;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card h3 {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.card .meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.card .desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.price-tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2f6e3f;
+}
+
+.badge-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--rust);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  opacity: 0.92;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+}
+
+.btn-danger {
+  background: var(--rust);
+  color: #fff;
+}
+
+.section-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--rust);
+  margin: 40px 0 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 560px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: #fffbf2;
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.panel {
+  background: #fffbf2;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.pill {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.pill-paid {
+  background: #e4f2e6;
+  color: #2f6e3f;
+}
+
+.pill-pending {
+  background: #fbeedc;
+  color: #a4621a;
+}
+
+.reader-text {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  font-size: 16px;
+  background: #fffbf2;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.notice {
+  background: #fbeedc;
+  border: 1px solid #e8c48a;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #6b4a16;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--muted);
+  font-size: 13px;
+}

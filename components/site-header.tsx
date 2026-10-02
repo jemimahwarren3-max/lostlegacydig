@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X, Compass, ShoppingBag, GraduationCap, Landmark, Sparkles, Users, MessageCircle, Building2, Search, ShoppingCart, User } from 'lucide-react';
+import { Menu, X, Compass, ShoppingBag, GraduationCap, Landmark, Sparkles, Users, MessageCircle, Building2, Search, ShoppingCart, User, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { href: '/', label: 'Discover', icon: Compass },
   { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
+  { href: '/books', label: 'Books & Lessons', icon: BookOpen },
   { href: '/learn', label: 'Learn', icon: GraduationCap },
   { href: '/map', label: 'Heritage', icon: Landmark },
   { href: '/experiences', label: 'Experiences', icon: Sparkles },
@@ -37,7 +38,7 @@ export function SiteHeader() {
         <nav className="hidden xl:flex items-center gap-1">
           {navLinks.map((link) => {
             const Icon = link.icon;
-            const active = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            const active = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
             return (
               <Link
                 key={link.href}
@@ -86,7 +87,7 @@ export function SiteHeader() {
           <div className="container mx-auto px-4 py-4 space-y-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
-              const active = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+              const active = pathname === link.href || (link.href !== '/' && pathname?.startsWith(link.href));
               return (
                 <Link
                   key={link.href}
